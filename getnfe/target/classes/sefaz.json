@@ -1,0 +1,120 @@
+{
+  "code": 200,
+  "code_message": "A requisição foi processada com sucesso.",
+  "header": {
+    "api_version": "v2",
+    "api_version_full": "2.2.4-20230224121106",
+    "product": "Consultas",
+    "service": "sefaz/am/nfce",
+    "parameters": {
+      "nfce": "11111111111111111111111111111111111111111111"
+    },
+    "client_name": "Minha Empresa",
+    "token_name": "Token de Produção",
+    "billable": true,
+    "price": "0.2",
+    "requested_at": "2023-02-27T18:46:24.000-03:00",
+    "elapsed_time_in_milliseconds": 547,
+    "remote_ip": "111.111.111.111",
+    "signature": "U2FsdGVkX1/2/2pk3IGE0SZPVXpQ7cC/UutjeL4FBo+5esNWVe8yqzXe/rBxRCb19F3EH3AR5p5IDkU2x6wS0Q=="
+  },
+  "data_count": 1,
+  "data": [
+    {
+      "consumidor": {
+        "cpf": "123.456.789-01",
+        "nome": "Exemplo de Nome"
+      },
+      "emitente": {
+        "nome_razao_social": "Exemplo de Nome",
+        "cnpj": "12.345.678/9012-34",
+        "endereco": "Avenida Paulista, 807. São Paulo. SP. Brasil."
+      },
+      "forma_pagamento": "Cartão de Crédito",
+      "informacoes_nota": {
+        "numero": "1111111111",
+        "serie": "3",
+        "data_emissao": "1111-11-11",
+        "hora_emissao": "11:11:11",
+        "protocolo_autorizacao": "55",
+        "ambiente": "Produção",
+        "versao_xml": "4.00",
+        "versao_xlst": "2.05",
+        "tipo_emissao": "Exemplo de Texto",
+        "chave_acesso": "1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111"
+      },
+      "normalizado_quantidade_total_items": 4.0,
+      "normalizado_tributos_totais": 521.93,
+      "normalizado_valor_pago": 1549.1,
+      "normalizado_valor_total": 1549.1,
+      "normalizado_valor_troco": 0.0,
+      "produtos": [
+        {
+          "nome": "Exemplo de Nome",
+          "codigo": "111",
+          "unidade": "UN",
+          "quantidade": "4",
+          "valor_unitario": "79,9",
+          "valor_total_produto": "319,60",
+          "normalizado_quantidade": 4.0,
+          "normalizado_valor_unitario": 79.9,
+          "normalizado_valor_total_do_produto": 0.0
+        },
+        {
+          "nome": "Exemplo de Nome",
+          "codigo": "111",
+          "unidade": "UN",
+          "quantidade": "2",
+          "valor_unitario": "49,9",
+          "valor_total_produto": "99,80",
+          "normalizado_quantidade": 2.0,
+          "normalizado_valor_unitario": 49.9,
+          "normalizado_valor_total_do_produto": 0.0
+        },
+        {
+          "nome": "Exemplo de Nome",
+          "codigo": "111",
+          "unidade": "JG",
+          "quantidade": "1",
+          "valor_unitario": "779,9",
+          "valor_total_produto": "779,90",
+          "normalizado_quantidade": 1.0,
+          "normalizado_valor_unitario": 779.9,
+          "normalizado_valor_total_do_produto": 0.0
+        },
+        {
+          "nome": "Exemplo de Nome",
+          "codigo": "111",
+          "unidade": "UN",
+          "quantidade": "1",
+          "valor_unitario": "299,9",
+          "valor_total_produto": "299,90",
+          "normalizado_quantidade": 1.0,
+          "normalizado_valor_unitario": 299.9,
+          "normalizado_valor_total_do_produto": 0.0
+        },
+        {
+          "nome": "Exemplo de Nome",
+          "codigo": "111",
+          "unidade": "UN",
+          "quantidade": "1",
+          "valor_unitario": "49,9",
+          "valor_total_produto": "49,90",
+          "normalizado_quantidade": 1.0,
+          "normalizado_valor_unitario": 49.9,
+          "normalizado_valor_total_do_produto": 0.0
+        }
+      ],
+      "quantidade_total_items": "4",
+      "tributos_totais": "521,93",
+      "valor_pago": "1.549,10",
+      "valor_total": "1.549,10",
+      "valor_troco": "NaN",
+      "site_receipt": "https://www.exemplo.com/exemplo-de-url"
+    }
+  ],
+  "errors": [],
+  "site_receipts": [
+    "https://www.exemplo.com/exemplo-de-url"
+  ]
+}

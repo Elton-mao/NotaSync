@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title th:text="${pageTitle}">Datatables - Kaiadmin Bootstrap 5 Admin Dashboard</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      th:href="@{/assets/img/kaiadmin/favicon.ico}"
+      href="../assets/img/kaiadmin/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/css/plugins.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/css/kaiadmin.min.css}" rel="stylesheet" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link th:href="@{/assets/css/demo.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="wrapper">
+
+      <!-- sidebar-->
+      <div th:replace="fragments/fragments :: sidebar"></div>
+      <!-- End Sidebar Fragment -->
+
+    <div class="main-panel">
+      <div class="main-header">
+        <div class="main-header-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="../index.html" class="logo">
+              <img
+                src="../assets/img/kaiadmin/logo_compol.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <!-- Navbar Header -->
+        <nav
+          class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+        >
+          <div class="container-fluid">
+            </ul>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+              <h4 class="page-title">Dashboard</h4>
+              <ul class="breadcrumbs">
+                <li class="nav-home">
+                  <a href="#">
+                    <i class="icon-home"></i>
+                  </a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="#">Pages</a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="#">Starter Page</a>
+                </li>
+              </ul>
+            </div>
+            <div class="page-category" >Emitente</div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title">Nota Fiscal - Detalhes</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6" th:object="${notaFiscal}">
+                        <h5>Informações do Emitente</h5>
+                        <p>
+                          <strong>Nome:</strong>
+                          <span th:text="*{emitente.razaoSocial}">João Silva</span>
+                        </p>
+                        <p>
+                          <strong>CNPJ:</strong>
+                          <span th:text="*{emitente.cnpj}">123.456.789-00</span>
+                        </p>
+                        <p>
+                          <strong>Inscrição Estadual:</strong>
+                          <span th:text="*{emitente.inscricaoEstadual}">123.456.789-00</span>
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <h5>Informações da Nota Fiscal</h5>
+                        <p><strong>Série:</strong> <span th:text="*{notaFiscal.serie}">001234</span></p>
+                        <p><strong>Numero Da Nota:</strong> <span th:text="*{notaFiscal.numeroDaNota}">001234</span></p>
+                        <p><strong>Data:</strong> <span th:text="*{notaFiscal.dataEmissao}">10/10/2024</span></p>
+                        <p><strong>Valor Total:</strong> <span th:text="*{notaFiscal.valorTotalFormatado}">R$ 1.500,00</span></p> 
+                        <p><strong>Chave de Acesso:</strong> <span th:text="*{notaFiscal.chaveAcesso}">12345678901234567890123456789012345678901234</span></p>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <h5>Itens</h5>
+                   <!-- adicionar alguma coisa aqui depois se precisar-->
+                    </div>
+                    <div class="text-end mt-3">
+                      <a
+                      th:href="@{/download/nota/{id}(id=*{id})}"
+                      class="btn btn-success">
+                      Download XML
+                      </a>                        
+                 
+                      <a
+                      th:href="@{/download/nota/{id}/danfe/visualizar(id=*{id})}"
+                      class="btn btn-danger"
+                      target="_blank">
+                      Gerar DANFE
+                  </a>
+                  
+                   <!-- <button class="btn btn-primary ">Importar para Sigen</button>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <nav class="pull-left">
+              <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="http://www.themekita.com">
+                    ThemeKita
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Help </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Licenses </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="copyright">
+              2024, made with <i class="fa fa-heart heart text-danger"></i> by
+              <a href="http://www.themekita.com">ThemeKita</a>
+            </div>
+            <div>
+              Distributed by
+              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script th:src="@{/assets/js/core/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/assets/js/core/popper.min.js}"></script>
+    <script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script th:src="@{/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js}"></script>
+
+    <!-- Chart JS -->
+    <script th:src="@{/assets/js/plugin/chart.js/chart.min.js}"></script>
+
+    <!-- jQuery Sparkline -->
+    <script th:src="@{/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js}"></script>
+
+    <!-- Chart Circle -->
+    <script th:src="@{/assets/js/plugin/chart-circle/circles.min.js}"></script>
+
+    <!-- Datatables -->
+    <script th:src="@{/assets/js/plugin/datatables/datatables.min.js}"></script>
+
+    <!-- Bootstrap Notify -->
+    <script th:src="@{/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js}"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script th:src="@{/assets/js/plugin/jsvectormap/jsvectormap.min.js}"></script>
+    <script th:src="@{/assets/js/plugin/jsvectormap/world.js}"></script>
+
+    <!-- Google Maps Plugin -->
+    <script th:src="@{/assets/js/plugin/gmaps/gmaps.js}"></script>
+
+    <!-- Sweet Alert -->
+    <script th:src="@{/assets/js/plugin/sweetalert/sweetalert.min.js}"></script>
+
+    <!-- Kaiadmin JS -->
+    <script th:src="@{/assets/js/kaiadmin.min.js}"></script>
+  </body>
+</html>
