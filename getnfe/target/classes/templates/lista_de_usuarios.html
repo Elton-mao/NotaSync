@@ -78,13 +78,15 @@
         </div> <!-- fecha main-header -->
 
         <!-- Conteúdo Principal -->
-       <div class="card">
+       <div class="content">
+    <div class="card">
     <div class="card-header">
         <!-- Botão para cadastrar novo usuário -->
         <a href="/user/create" class="btn btn-primary btn-sm">Cadastrar Novo Usuário</a>
     </div>
     <div class="card-body">
-        <table class="table table-hover">
+        <div class="table-responsive">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -111,8 +113,10 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 </div>
+       </div>
     <!-- Core JS Files -->
     <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="/assets/js/core/popper.min.js"></script>

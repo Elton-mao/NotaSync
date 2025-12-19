@@ -28,30 +28,36 @@ public class DashBoardServiceImpl implements DashboardService {
 
   @Override
   public DashBoardListItem getDashboardData() {
+    //busca as notas fiscais do último mês
     List<NotaFiscalListItem> notasFiscais = notaFiscalService.findByDataEmissaoBetween(
         LocalDate.now().withDayOfMonth(1).atStartOfDay(),
         LocalDateTime.now());
+    //calcula o valor total das notas fiscais do último mês
     BigDecimal valorTotalUltimoMes = notasFiscais.stream()
         .map(n -> new BigDecimal(n.getValorTotal().toString()))
         .reduce(BigDecimal.ZERO, BigDecimal::add);
+    //conta a quantidade de emitentes
     int emitentes = emitenteService.listAllEmitentes().size(); 
+    //monta o DTO de retorno
     return DashBoardListItem.builder()
         .qtdadeNfe(notasFiscais.size())
         .qtdFornecedores(emitentes)
         .valorTotalNfeUltimoMes(valorTotalUltimoMes)
         .build();
-  }
-
+  } 
+  //método para obter os totais dos últimos 3 meses
   public Map<String, BigDecimal> getTotaisUltimos3Meses() {
     LocalDate hoje = LocalDate.now();
     LocalDate primeiroDia3MesesAtras = hoje.minusMonths(2).withDayOfMonth(1); // Ex: se hoje é maio, começa em março
+  
     LocalDate ultimoDiaMesAtual = hoje.withDayOfMonth(hoje.lengthOfMonth());
 
     LocalDateTime inicio = primeiroDia3MesesAtras.atStartOfDay();
+
     LocalDateTime fim = ultimoDiaMesAtual.atTime(LocalTime.MAX);
-
+    
     List<NotaFiscalListItem> notas = notaFiscalService.findByDataEmissaoBetween(inicio, fim);
-
+    // Agrupa por mês e soma os valores
     return notas.stream()
         .collect(Collectors.groupingBy(
             nf -> nf.getDataEmissao().getMonth().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("pt-BR")),

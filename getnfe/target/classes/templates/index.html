@@ -40,6 +40,24 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="assets/css/demo.css" />
+    <style>
+      /* Ajustes visuais leves e modernos para o dashboard */
+      .card-stats .card-body { padding: 1rem 1.25rem; }
+      .card-stats .card-category {
+        font-size: 0.75rem;
+        color: #6c757d;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.25rem;
+      }
+      .card-stats .card-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      .card.card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .card.card-hover:hover { transform: translateY(-2px); box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.08); }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -94,14 +112,14 @@
             >
               <div>
                 <h3 class="fw-bold mb-3">Dashboard</h3>
-                <h6 class="op-7 mb-2">Painel de Indicadores Fiscais</h6>
+                <h6 class="op-7 mb-2">Painel de Indicadores Fiscais Mês Atual</h6>
               </div>
              <!--  <div class="ms-md-auto py-2 py-md-0">
                 <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
                 <a href="#" class="btn btn-primary btn-round">Add Customer</a>
               </div> -->
             </div>
-            <div class="row">
+            <div class="row g-3">
               <div class="col-sm-6 col-md-3">
                 <div class="card card-stats card-round">
                   <div class="card-body">
@@ -116,7 +134,7 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Fornecedores</p>
-                            <h4 class="card-title" th:text="${dashboard.qtdFornecedores}">48</h4>
+                            <h4 id="kpiFornecedores" class="card-title" th:text="${dashboard.qtdFornecedores}">48</h4>
                         </div>
                       </div>
                     </div>
@@ -136,7 +154,7 @@
                         <div class="col col-stats ms-3 ms-sm-0">
                           <div class="numbers">
                             <p class="card-category">Valor Total</p>
-                            <h4 class="card-title" th:text="${dashboard.valorTotalNfeUltimoMes}">$ 1,345</h4>
+                            <h4 id="kpiValorTotal" class="card-title" th:text="${dashboard.valorTotalNfeUltimoMes}">$ 1,345</h4>
                           </div>
                         </div>
                       </div>
@@ -163,7 +181,7 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Total de Notas</p>
-                          <h4 class="card-title" th:text="${dashboard.qtdadeNfe}">576</h4>
+                          <h4 id="kpiTotalNotas" class="card-title" th:text="${dashboard.qtdadeNfe}">576</h4>
                         </div>
                       </div>
                     </div>
@@ -171,6 +189,103 @@
                 </div>
               </div>
               <a>
+            </div>
+            
+            <!-- Lista de Notas Fiscais (Mock, sem Thymeleaf) -->
+            <div class="row mt-3">
+              <div class="col-12">
+                <div class="card card-round">
+                  <div class="card-header">
+                    <div class="card-head-row card-tools-still-right">
+                      <div class="card-title">Notas Fiscais (Mock)</div>
+                      <div class="card-tools">
+                        <div class="dropdown">
+                          <button class="btn btn-icon btn-clean me-0" type="button" id="dropdownNotasMock" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownNotasMock">
+                            <a class="dropdown-item" href="#">Exportar CSV</a>
+                            <a class="dropdown-item" href="#">Filtrar</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-hover align-items-center mb-0">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Número</th>
+                            <th scope="col">Emissão</th>
+                            <th scope="col">Fornecedor</th>
+                            <th scope="col" class="text-end">Valor (R$)</th>
+                            <th scope="col">Situação</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>000123</td>
+                            <td>2025-12-01</td>
+                            <td>Fornecedor A</td>
+                            <td class="text-end">12.500,00</td>
+                            <td><span class="badge bg-success">Autorizada</span></td>
+                          </tr>
+                          <tr>
+                            <td>000124</td>
+                            <td>2025-12-02</td>
+                            <td>Fornecedor B</td>
+                            <td class="text-end">8.940,50</td>
+                            <td><span class="badge bg-warning">Pendente</span></td>
+                          </tr>
+                          <tr>
+                            <td>000125</td>
+                            <td>2025-12-02</td>
+                            <td>Fornecedor C</td>
+                            <td class="text-end">22.300,00</td>
+                            <td><span class="badge bg-success">Autorizada</span></td>
+                          </tr>
+                          <tr>
+                            <td>000126</td>
+                            <td>2025-12-03</td>
+                            <td>Fornecedor D</td>
+                            <td class="text-end">5.120,75</td>
+                            <td><span class="badge bg-danger">Rejeitada</span></td>
+                          </tr>
+                          <tr>
+                            <td>000127</td>
+                            <td>2025-12-03</td>
+                            <td>Fornecedor E</td>
+                            <td class="text-end">17.890,00</td>
+                            <td><span class="badge bg-success">Autorizada</span></td>
+                          </tr>
+                          <tr>
+                            <td>000128</td>
+                            <td>2025-12-04</td>
+                            <td>Fornecedor F</td>
+                            <td class="text-end">3.420,00</td>
+                            <td><span class="badge bg-secondary">Cancelada</span></td>
+                          </tr>
+                          <tr>
+                            <td>000129</td>
+                            <td>2025-12-04</td>
+                            <td>Fornecedor G</td>
+                            <td class="text-end">9.999,99</td>
+                            <td><span class="badge bg-success">Autorizada</span></td>
+                          </tr>
+                          <tr>
+                            <td>000130</td>
+                            <td>2025-12-05</td>
+                            <td>Fornecedor H</td>
+                            <td class="text-end">1.250,00</td>
+                            <td><span class="badge bg-warning">Pendente</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           
               <!-- <div class="col-md-4">
@@ -510,6 +625,81 @@
         lineWidth: "2",
         lineColor: "#ffa534",
         fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
+    <script>
+      // Gráfico dos KPIs existentes, sem alterar as expressões Thymeleaf
+      document.addEventListener('DOMContentLoaded', function () {
+        var elFor = document.getElementById('kpiFornecedores');
+        var elVal = document.getElementById('kpiValorTotal');
+        var elTot = document.getElementById('kpiTotalNotas');
+        function parseNumber(text) {
+          if (!text) return 0;
+          // Remove símbolos e normaliza separadores (suporta formatos pt-BR e en-US)
+          var cleaned = String(text).replace(/[^\d,.-]/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.');
+          var n = parseFloat(cleaned);
+          return isNaN(n) ? 0 : n;
+        }
+        var fornecedores = parseNumber(elFor && elFor.textContent);
+        var valorTotal = parseNumber(elVal && elVal.textContent);
+        var totalNotas = parseNumber(elTot && elTot.textContent);
+
+        var canvas = document.getElementById('kpiChart');
+        if (canvas && window.Chart) {
+          var ctx = canvas.getContext('2d');
+          var labels = ['Fornecedores', 'Valor Total (R$)', 'Total de Notas'];
+          function formatBRL(v){
+            try { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v || 0); }
+            catch(e){ return 'R$ ' + (v||0).toFixed(2); }
+          }
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: 'Contagens',
+                  yAxisID: 'y',
+                  backgroundColor: '#177dff',
+                  data: [fornecedores, 0, totalNotas],
+                  categoryPercentage: 0.6,
+                  barPercentage: 0.8
+                },
+                {
+                  label: 'Valor Total',
+                  yAxisID: 'y1',
+                  backgroundColor: '#11cdef',
+                  data: [0, valorTotal, 0],
+                  categoryPercentage: 0.6,
+                  barPercentage: 0.8
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { display: true },
+                tooltip: {
+                  callbacks: {
+                    label: function(ctx){
+                      var v = ctx.parsed.y;
+                      return ctx.dataset.yAxisID === 'y1' ? (ctx.dataset.label + ': ' + formatBRL(v)) : (ctx.dataset.label + ': ' + v);
+                    }
+                  }
+                }
+              },
+              scales: {
+                y: { beginAtZero: true },
+                y1: {
+                  beginAtZero: true,
+                  position: 'right',
+                  grid: { drawOnChartArea: false },
+                  ticks: { callback: function(value){ return formatBRL(value); } }
+                }
+              }
+            }
+          });
+        }
       });
     </script>
   </body>
