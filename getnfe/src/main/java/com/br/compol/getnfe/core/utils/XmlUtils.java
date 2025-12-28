@@ -1,13 +1,13 @@
 package com.br.compol.getnfe.core.utils;
 
 public class XmlUtils {
-
-    /**
- * Extracts the <nfeProc> tag and its content from the given XML string.
+/**
+ * Extrai a tag <nfeProc> e todo o seu conteúdo a partir da string XML informada.
  *
- * @param xml the XML string from which the <nfeProc> tag and its content will be extracted
- * @return a substring containing the <nfeProc> tag and its content, or {@code null} if the tag is not found
+ * @param xml a string XML da qual a tag <nfeProc> e seu conteúdo serão extraídos
+ * @return uma substring contendo a tag <nfeProc> e todo o seu conteúdo, ou {@code null} caso a tag não seja encontrada
  */
+
 public static String extrairTagNfeProc(String xml) {
     int inicio = xml.indexOf("<nfeProc");
     int fim = xml.indexOf("</nfeProc>");
@@ -17,6 +17,7 @@ public static String extrairTagNfeProc(String xml) {
     fim += "</nfeProc>".length();
     return xml.substring(inicio, fim);
 }
+
 }
 
 

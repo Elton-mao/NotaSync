@@ -19,7 +19,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+/**
+ * Representa uma Nota Fiscal Eletrônica (NFe) armazenada no banco de dados.
+ * Esta classe utiliza anotações JPA para mapear os atributos para colunas da tabela "nota_fiscal".
+ */
 @Setter
 @Getter
 @Entity

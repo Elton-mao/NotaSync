@@ -5,7 +5,10 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.List;
-
+/**
+ * Representa o processamento de uma Nota Fiscal Eletrônica (NFe) no formato XML.
+ * Esta classe utiliza anotações JAXB para mapear os elementos XML para objetos Java.
+ */
 @XmlRootElement(name = "nfeProc", namespace = "http://www.portalfiscal.inf.br/nfe")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {"nfe", "protocolo"})

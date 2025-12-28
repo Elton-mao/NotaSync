@@ -19,6 +19,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+/**
+ * Representa o emitente de uma Nota Fiscal Eletrônica (NFe).
+ * Esta classe utiliza anotações JPA para mapear os atributos para colunas da tabela "emitente".
+ */
 @Entity
 @Getter
 @Setter

@@ -50,9 +50,9 @@ import lombok.RequiredArgsConstructor;
  * <li>{@code create(NfeProc notafiscalForm, String xmlFile)} - Salva uma nova
  * entidade de Nota Fiscal no banco de dados.</li>
  * <li>{@code findById(Long id)} - Recupera uma Nota Fiscal pelo seu ID e a
- * mapeia para um DTO.</li>
+ * realiza o mapper e retorna o DTO para exibição</li>
  * <li>{@code findAll()} - Recupera todos os registros de Nota Fiscal e os
- * mapeia para uma lista de DTOs.</li>
+ * realiza o mapper e retorna os DTOs para exibição .</li>
  * </ul>
  */
 @Service
@@ -93,6 +93,5 @@ public class NotaFiscalServiceImpl implements NotaFiscalService {
                 .toList();
     }
 
- 
 
 }

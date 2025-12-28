@@ -17,8 +17,7 @@ SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             .ignoringRequestMatchers("/clientes/cadastrar") // opcional se estiver fazendo POST sem token CSRF
         )
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/api/gerardanfe").permitAll() 
-            .anyRequest().permitAll()
+            .anyRequest().authenticated()
         )
         .formLogin(form -> form
             .loginPage("/auth/login")

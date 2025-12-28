@@ -58,19 +58,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class XmlServiceImpl implements XmlService{
-    private final NotaFiscalService notaFiscalService;
 
+    private final NotaFiscalService notaFiscalService;
+    
+    private static String diretorio = "C:\\Users\\elton\\Documentos\\NotaSync";
+   
+   private static String caminhoProcessados = "C:\\Users\\elton\\Documentos\\NotaSync\\processados";
+
+    /**
+     * Método agendado para importar e processar todos os arquivos XML no diretório especificado.
+     */
     @Override
     @Scheduled(fixedDelay = 300000)// Executa a cada 60 segundos
     public void importarTodosXmls() {
-        //
-        String diretorio = "C:\\Users\\elton\\OneDrive\\Documentos\\xml";
-    //   String diretorio = "/home/administrador/app/base-xml";
         
-        String caminhoProcessados = "C:\\Users\\elton\\OneDrive\\Documentos\\xml\\processados\\";
-       //caminho do servidor  
-    //   var caminhoProcessados = "/home/administrador/app/base-xml/processados";
-
+     
         File pasta = new File(diretorio);
 
         if (!pasta.exists() || !pasta.isDirectory()) {
@@ -117,7 +119,7 @@ public class XmlServiceImpl implements XmlService{
                 mensagensErro.add("Erro no arquivo " + xmlFile.getName() + ": " + ex.getMessage());
                 ex.printStackTrace();
 
-                // Move o arquivo com erro para a pasta "erro"
+                // se Houver move o arquivo com erro para a pasta "erro"
                 try {
                     File pastaErro = new File(diretorio + "//erro"); // já foi criada manualmente
                     Files.move(
@@ -142,8 +144,8 @@ public class XmlServiceImpl implements XmlService{
         int erro = 0;
         try {
 
-            String diretorio = "/home/administrador/app/base-xml"; // <--diretório
-            String caminhoProcessados = "/home/administrador/app/base-xml/processados"; // <--diretório
+            // String diretorio = "/home/administrador/app/base-xml"; // <--diretório
+            // String caminhoProcessados = "/home/administrador/app/base-xml/processados"; // <--diretório
             File xmlFile = new File(diretorio, nomeDoArquivo);
             if (!xmlFile.exists()) {
                 throw new RuntimeException("Arquivo XML não encontrado: " + nomeDoArquivo);
