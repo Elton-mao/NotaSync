@@ -1,4 +1,4 @@
-package com.br.compol.getnfe.web.app.security.controllers;
+package com.br.compol.getnfe.core.security;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -3,7 +3,6 @@ com\br\compol\getnfe\core\model\notafiscal\NfeProc$Produto.class
 com\br\compol\getnfe\web\app\dashboard\dtos\DashBoardListItem.class
 com\br\compol\getnfe\core\mappers\notafiscal\NotafiscalMapper.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc.class
-com\br\compol\getnfe\core\config\security\PasswordEncodeConfig.class
 com\br\compol\getnfe\core\mappers\usuario\UsuarioMapper.class
 com\br\compol\getnfe\web\app\emitente\dto\EmitenteListItem$EmitenteListItemBuilder.class
 com\br\compol\getnfe\web\app\dashboard\controller\DashBoardController.class
@@ -14,7 +13,6 @@ com\br\compol\getnfe\web\app\usuario\dtos\UsuarioForm$UsuarioFormBuilder.class
 com\br\compol\getnfe\web\app\dashboard\dtos\DashBoardListItem$DashBoardListItemBuilder.class
 com\br\compol\getnfe\web\app\emitente\controller\EmitenteController.class
 com\br\compol\getnfe\core\mappers\emitente\EmitenteMapperImpl.class
-com\br\compol\getnfe\core\service\security\AutheticationService.class
 com\br\compol\getnfe\core\model\notafiscal\NotaFiscal.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$NFe.class
 com\br\compol\getnfe\core\repositories\usuario\UsuarioRepository.class
@@ -24,7 +22,6 @@ com\br\compol\getnfe\core\service\notafiscal\XmlService.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$InformacoesNFe.class
 com\br\compol\getnfe\core\service\notafiscal\NotaFiscalService.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$Protocolo.class
-com\br\compol\getnfe\core\config\security\SecurityConfig.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$InfoProtocolo.class
 com\br\compol\getnfe\GetnfeApplication.class
 com\br\compol\getnfe\core\model\Auth\AuthenticatedUser.class
@@ -34,7 +31,6 @@ com\br\compol\getnfe\core\model\notafiscal\NfeProc$Valores.class
 com\br\compol\getnfe\core\model\notafiscal\NotaFiscal$NotaFiscalBuilder.class
 com\br\compol\getnfe\web\app\notafiscal\dtos\NotafiscalForm$NotafiscalFormBuilder.class
 com\br\compol\getnfe\web\app\emitente\dto\EmitenteListItem.class
-com\br\compol\getnfe\web\app\security\controllers\AuthController.class
 com\br\compol\getnfe\web\app\notafiscal\dtos\NotaFiscalListItem$NotaFiscalListItemBuilder.class
 com\br\compol\getnfe\web\app\notafiscal\dtos\NotafiscalForm.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$Identificacao.class

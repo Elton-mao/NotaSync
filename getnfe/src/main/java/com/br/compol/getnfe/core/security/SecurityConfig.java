@@ -1,4 +1,4 @@
-package com.br.compol.getnfe.core.config.security;
+package com.br.compol.getnfe.core.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

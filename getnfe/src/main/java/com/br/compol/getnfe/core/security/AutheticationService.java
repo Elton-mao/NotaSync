@@ -1,4 +1,4 @@
-package com.br.compol.getnfe.core.service.security;
+package com.br.compol.getnfe.core.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
