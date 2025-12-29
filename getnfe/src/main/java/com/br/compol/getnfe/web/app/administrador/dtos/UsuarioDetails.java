@@ -1,4 +1,4 @@
-package com.br.compol.getnfe.web.app.usuario.dtos;
+package com.br.compol.getnfe.web.app.administrador.dtos;
 
 import com.br.compol.getnfe.enums.GruposDeUsuario;
 
@@ -7,13 +7,19 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Setter
+
 @Getter
+@Setter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioForm {
+public class UsuarioDetails {
+
+    private Long id;
+
     private String login;
     
     private String nome;
@@ -22,6 +28,4 @@ public class UsuarioForm {
    
     private GruposDeUsuario grupo; 
 
-    private String senha; 
-    
 }

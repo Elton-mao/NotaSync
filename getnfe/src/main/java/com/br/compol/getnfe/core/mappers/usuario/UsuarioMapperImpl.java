@@ -4,8 +4,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.br.compol.getnfe.core.model.usuario.Usuario;
-import com.br.compol.getnfe.web.app.usuario.dtos.UsuarioDetails;
-import com.br.compol.getnfe.web.app.usuario.dtos.UsuarioForm;
+import com.br.compol.getnfe.web.app.administrador.dtos.UsuarioDetails;
+import com.br.compol.getnfe.web.app.administrador.dtos.UsuarioForm;
 
 import lombok.RequiredArgsConstructor;
 

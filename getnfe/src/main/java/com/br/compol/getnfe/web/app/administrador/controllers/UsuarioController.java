@@ -15,7 +15,7 @@
  *
  * @author elton.almeida
  */
-package com.br.compol.getnfe.web.app.usuario.controllers;
+package com.br.compol.getnfe.web.app.administrador.controllers;
 
 import java.util.Map;
 
@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.br.compol.getnfe.core.service.usuario.UsuarioService;
 import com.br.compol.getnfe.enums.GruposDeUsuario;
-import com.br.compol.getnfe.web.app.usuario.dtos.UsuarioForm;
+import com.br.compol.getnfe.web.app.administrador.dtos.UsuarioForm;
 
 import lombok.RequiredArgsConstructor;
 

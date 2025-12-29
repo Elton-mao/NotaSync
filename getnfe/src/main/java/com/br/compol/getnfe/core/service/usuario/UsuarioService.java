@@ -2,8 +2,8 @@ package com.br.compol.getnfe.core.service.usuario;
 
 import java.util.List;
 
-import com.br.compol.getnfe.web.app.usuario.dtos.UsuarioDetails;
-import com.br.compol.getnfe.web.app.usuario.dtos.UsuarioForm;
+import com.br.compol.getnfe.web.app.administrador.dtos.UsuarioDetails;
+import com.br.compol.getnfe.web.app.administrador.dtos.UsuarioForm;
 
 
  /** 

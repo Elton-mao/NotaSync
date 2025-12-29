@@ -24,8 +24,8 @@ import org.springframework.stereotype.Service;
 
 import com.br.compol.getnfe.core.mappers.usuario.UsuarioMapper;
 import com.br.compol.getnfe.core.repositories.usuario.UsuarioRepository;
-import com.br.compol.getnfe.web.app.usuario.dtos.UsuarioDetails;
-import com.br.compol.getnfe.web.app.usuario.dtos.UsuarioForm;
+import com.br.compol.getnfe.web.app.administrador.dtos.UsuarioDetails;
+import com.br.compol.getnfe.web.app.administrador.dtos.UsuarioForm;
 
 import lombok.RequiredArgsConstructor;
 @Service
