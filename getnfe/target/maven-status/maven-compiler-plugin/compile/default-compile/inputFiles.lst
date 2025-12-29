@@ -1,4 +1,7 @@
-C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\configurações\diretorios\ConfiguracaoDiretorio.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\configurações\diretorios\DiretorioConfig.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\configurações\diretorios\DiretorioConfigMapper.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\configurações\diretorios\DiretorioConfigRepository.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\configurações\diretorios\DiretorioService.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\configurações\diretorios\TipoDiretorio.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\mappers\emitente\EmitenteMapper.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\core\mappers\emitente\EmitenteMapperImpl.java
@@ -34,6 +37,12 @@ C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\get
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\enums\GruposDeUsuario.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\GetnfeApplication.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\api\GerarDanfeRestContoller.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\administrador\controllers\DiretorioConfigController.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\administrador\controllers\UsuarioController.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\administrador\dtos\DiretorioConfigDetalhes.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\administrador\dtos\DiretorioConfigForm.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\administrador\dtos\UsuarioDetails.java
+C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\administrador\dtos\UsuarioForm.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\dashboard\controller\DashBoardController.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\dashboard\dtos\DashBoardListItem.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\emitente\controller\EmitenteController.java
@@ -42,6 +51,3 @@ C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\get
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\notafiscal\Controllers\NotaFiscalController.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\notafiscal\dtos\NotafiscalForm.java
 C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\notafiscal\dtos\NotaFiscalListItem.java
-C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\usuario\controllers\UsuarioController.java
-C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\usuario\dtos\UsuarioDetails.java
-C:\Users\elton\Documentos\GitHub\NotaSync\getnfe\src\main\java\com\br\compol\getnfe\web\app\usuario\dtos\UsuarioForm.java

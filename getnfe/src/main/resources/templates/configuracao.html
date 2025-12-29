@@ -144,6 +144,63 @@
   </div>
 </div>
 <!-- fim formulario Cadastro de Diretório -->
+<!-- Lista de Diretórios Configurados -->
+<div class="row mt-4">
+  <div class="col-md-12">
+    <div class="card">
+
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <div class="card-title fs-4">
+          Diretórios Configurados
+        </div>
+      </div>
+
+      <div class="card-body p-4">
+
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle fs-5">
+            <thead class="bg-light">
+              <tr>
+                <th style="width: 20%">Tipo</th>
+                <th style="width: 60%">Caminho do Diretório</th>
+                <th style="width: 20%" class="text-center">Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr th:each="dir : ${configuracoes}">
+                <td class="fw-bold"
+                    th:text="${dir.tipoDiretorio}">
+                </td>
+
+                <td class="text-break"
+                    th:text="${dir.caminhoDiretorio}">
+                </td>
+
+                <td class="text-center">
+                  <span class="badge badge-success fs-6 px-3 py-2">
+                    <i class="fa fa-check-circle me-1"></i>
+                    Configurada
+                  </span>
+                </td>
+              </tr>
+
+              <tr th:if="${#lists.isEmpty(configuracoes)}">
+                <td colspan="3"
+                    class="text-center text-muted fs-5 py-4">
+                  Nenhum diretório configurado
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim Lista de Diretórios Configurados -->
 
           <!-- fim formulario Cadastro-->
     <!--   Core JS Files   -->

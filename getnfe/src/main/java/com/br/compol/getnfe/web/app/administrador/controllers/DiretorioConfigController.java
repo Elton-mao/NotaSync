@@ -23,7 +23,8 @@ public class DiretorioConfigController {
     public ModelAndView configuraDiretorios() {
         var model = Map.of(
             "DiretorioConfigForm", new DiretorioConfigForm(),
-            "tiposDiretorio", TipoDiretorio.values()
+            "tiposDiretorio", TipoDiretorio.values(),
+            "configuracoes", service.buscarTodosDiretorios()
         );
         return new ModelAndView("/configuracao", model);
     }

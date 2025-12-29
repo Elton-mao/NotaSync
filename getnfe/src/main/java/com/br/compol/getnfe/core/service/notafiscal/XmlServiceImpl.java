@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,12 @@ import java.util.List;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.br.compol.getnfe.core.configurações.diretorios.DiretorioService;
+import com.br.compol.getnfe.core.configurações.diretorios.TipoDiretorio;
 import com.br.compol.getnfe.core.model.notafiscal.NfeProc;
 import com.br.compol.getnfe.core.utils.XmlUtils;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.RequiredArgsConstructor;
@@ -60,27 +63,34 @@ import lombok.RequiredArgsConstructor;
 public class XmlServiceImpl implements XmlService{
 
     private final NotaFiscalService notaFiscalService;
+    private final DiretorioService diretorioService;
     
-    private static String diretorio = "C:\\Users\\elton\\Documentos\\NotaSync";
+    private Path diretorioXML;
+
+    private Path caminhoProcessados;
+
    
-   private static String caminhoProcessados = "C:\\Users\\elton\\Documentos\\NotaSync\\processados";
+    void carregarDiretorios(){
+        caminhoProcessados = diretorioService.obterDiretorioPorTipo(TipoDiretorio.DIR_PROCESSADOS);
+        diretorioXML = diretorioService.obterDiretorioPorTipo(TipoDiretorio.DIR_XML);
+    }
+   
 
     /**
      * Método agendado para importar e processar todos os arquivos XML no diretório especificado.
      */
     @Override
-    @Scheduled(fixedDelay = 300000)// Executa a cada 60 segundos
+    @Scheduled(fixedDelay = 60000)// Executa a cada 60 segundos
     public void importarTodosXmls() {
         
-     
-        File pasta = new File(diretorio);
+        carregarDiretorios();
+        //File pasta = new File(diretorioXML);
 
-        if (!pasta.exists() || !pasta.isDirectory()) {
-            throw new RuntimeException("Diretório inválido: " + diretorio);
+        if (!diretorioXML.toFile().exists() || !diretorioXML.toFile().isDirectory()) {
+            throw new RuntimeException("Diretório inválido: " + diretorioXML);
         }
 
-        File[] arquivosXml = pasta.listFiles((dir, name) -> name.toLowerCase().endsWith(".xml"));
-
+        File[] arquivosXml = diretorioXML.toFile().listFiles((dir, name) -> name.toLowerCase().endsWith(".xml"));
         if (arquivosXml == null || arquivosXml.length == 0) {
             throw new RuntimeException("Nenhum arquivo XML encontrado no diretório.");
         }
@@ -92,7 +102,6 @@ public class XmlServiceImpl implements XmlService{
         for (File xmlFile : arquivosXml) {
             try {
                 String xmlString = Files.readString(xmlFile.toPath(), StandardCharsets.UTF_8);
-                // String nfeXml = extrairTagNfeProc(xmlString);
                 String nfeXml = XmlUtils.extrairTagNfeProc(xmlString);
                 if (nfeXml == null) {
                     mensagensErro.add("Tag <nfeProc> não encontrada no arquivo: " + xmlFile.getName());
@@ -106,14 +115,13 @@ public class XmlServiceImpl implements XmlService{
 
                 Files.move(
                         xmlFile.toPath(),
-                        new File(caminhoProcessados, xmlFile.getName())
-                                .toPath(),
+                        caminhoProcessados.resolve(xmlFile.getName()),
                         StandardCopyOption.REPLACE_EXISTING);
                 sucesso++;
 
                 // método que salva no banco
 
-                notaFiscalService.create(notaDTO, Paths.get(caminhoProcessados, xmlFile.getName()).toString());
+                notaFiscalService.create(notaDTO, caminhoProcessados.resolve(xmlFile.getName()).toString());
             } catch (Exception ex) {
                 erro++;
                 mensagensErro.add("Erro no arquivo " + xmlFile.getName() + ": " + ex.getMessage());
@@ -121,7 +129,7 @@ public class XmlServiceImpl implements XmlService{
 
                 // se Houver move o arquivo com erro para a pasta "erro"
                 try {
-                    File pastaErro = new File(diretorio + "//erro"); // já foi criada manualmente
+                    File pastaErro = new File(diretorioXML + "//erro"); // já foi criada manualmente
                     Files.move(
                             xmlFile.toPath(),
                             new File(pastaErro, xmlFile.getName()).toPath(),
@@ -144,9 +152,8 @@ public class XmlServiceImpl implements XmlService{
         int erro = 0;
         try {
 
-            // String diretorio = "/home/administrador/app/base-xml"; // <--diretório
-            // String caminhoProcessados = "/home/administrador/app/base-xml/processados"; // <--diretório
-            File xmlFile = new File(diretorio, nomeDoArquivo);
+
+            File xmlFile = new File(diretorioXML.toFile(), nomeDoArquivo);
             if (!xmlFile.exists()) {
                 throw new RuntimeException("Arquivo XML não encontrado: " + nomeDoArquivo);
             }
@@ -160,12 +167,11 @@ public class XmlServiceImpl implements XmlService{
 
             Files.move(
                     xmlFile.toPath(),
-                    new File(caminhoProcessados, xmlFile.getName())
-                            .toPath(),
+                    caminhoProcessados.resolve(xmlFile.getName()),
                     StandardCopyOption.REPLACE_EXISTING);
             sucesso++;
 
-           notaFiscalService.create(notaDTO, Paths.get(caminhoProcessados, xmlFile.getName()).toString());
+           notaFiscalService.create(notaDTO, caminhoProcessados.resolve(xmlFile.getName()).toString());
         } catch (Exception ex) {
             erro ++;
           throw new RuntimeException("Erro ao processar o arquivo: " + nomeDoArquivo, ex);

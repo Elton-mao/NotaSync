@@ -2,8 +2,8 @@
 <div th:fragment="sidebar">
     <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
-            <!-- Logo Header -->
-            <div class="logo-header" data-background-color="dark">
+            <!-- Logo Header --> 
+            <div class="logo-header" data-background-color="dark" style="padding-top: 30px;">
                 <a th:href="@{/dashboard}" class="logo">
                     <img
                         th:src="@{/assets/img/notaSyncLogo-removebg-preview.png}"
@@ -12,6 +12,7 @@
                         height="200"
                     />
                 </a>
+            
                 <div class="nav-toggle">
                     <button class="btn btn-toggle toggle-sidebar">
                         <i class="gg-menu-right"></i>
@@ -136,7 +137,7 @@
 
                                 <!-- Configurações do Sistema -->
                                 <li>
-                                    <a th:href="@{/configuracoes}">
+                                    <a th:href="@{/admin/diretorios}">
                                         <span class="sub-item">Configurações do Sistema</span>
                                     </a>
                                 </li>
