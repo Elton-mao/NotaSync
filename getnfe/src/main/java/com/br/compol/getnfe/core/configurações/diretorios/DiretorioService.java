@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.br.compol.getnfe.web.app.administrador.dtos.DiretorioConfigDetalhes;
@@ -49,6 +50,18 @@ public class DiretorioService {
         DiretorioConfig config = diretorioMapper.toDiretorioConfig(form);
         DiretorioConfig salvo = diretorioRepository.save(config);
         return diretorioMapper.toDiretorioConfigDetalhes(salvo);
+    }
+
+    public DiretorioConfigDetalhes atualizarDiretorio(Long id, DiretorioConfigForm form){
+        var diretorioExistente = diretorioRepository.findById(id).get(); 
+        BeanUtils.copyProperties(form, diretorioExistente, "id");
+        DiretorioConfig atualizado = diretorioRepository.save(diretorioExistente);
+        return diretorioMapper.toDiretorioConfigDetalhes(atualizado);
+    }
+
+    public DiretorioConfigDetalhes buscarDiretorioPorId(Long id){
+        var diretorio = diretorioRepository.findById(id).get();
+        return diretorioMapper.toDiretorioConfigDetalhes(diretorio);
     }
 
 }

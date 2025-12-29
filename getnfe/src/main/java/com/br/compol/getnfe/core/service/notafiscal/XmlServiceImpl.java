@@ -18,7 +18,6 @@ import com.br.compol.getnfe.core.configurações.diretorios.TipoDiretorio;
 import com.br.compol.getnfe.core.model.notafiscal.NfeProc;
 import com.br.compol.getnfe.core.utils.XmlUtils;
 
-import jakarta.annotation.PostConstruct;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.RequiredArgsConstructor;

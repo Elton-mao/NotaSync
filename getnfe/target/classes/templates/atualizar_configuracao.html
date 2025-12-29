@@ -85,34 +85,43 @@
           <!-- End Navbar -->
         </div>
 
-      
-                  <!-- Formulario de Cadastro de Diretório -->
+ <!-- Formulario de Cadastro/Edicao de Diretório -->
 <div class="row">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <div class="card-title">Configuração de Diretórios</div>
+        <div class="card-title fs-4">
+          <!-- Título dinâmico: Novo ou Editando -->
+          <span th:text="${DiretorioConfigForm.id != null} ? 'Editando Diretório' : 'Novo Diretório'"></span>
+        </div>
+        <!-- Badge/Alerta indicando edição -->
+        <div th:if="${DiretorioConfigForm.id != null}" class="alert alert-info mt-2 mb-0">
+          Você está editando este diretório. As alterações serão salvas ao clicar em <strong>Salvar</strong>.
+        </div>
       </div>
 
       <div class="card-body">
         <div class="row">
           <div class="col-md-6 col-lg-4">
 
-            <form th:action="@{/admin/diretorios}" 
+            <form th:action="@{/admin/diretorios/{id}(id=${DiretorioConfigForm.id})}" 
                   method="post" 
                   th:object="${DiretorioConfigForm}">
 
               <div class="form-group">
-
                 <label for="tipoDiretorio">Tipo de Diretório *</label>
                 <select class="form-control"
                         id="tipoDiretorio"
                         required
                         th:field="*{tipoDiretorio}">
-                  <option value="" disabled selected>SELECIONE</option>
+                  <option value="" disabled 
+                          th:selected="${DiretorioConfigForm.tipoDiretorio == null}">
+                    SELECIONE
+                  </option>
                   <option th:each="tipo : ${tiposDiretorio}"
                           th:value="${tipo}"
-                          th:text="${tipo}">
+                          th:text="${tipo}"
+                          th:selected="${tipo == DiretorioConfigForm.tipoDiretorio}">
                   </option>
                 </select>
 
@@ -125,7 +134,6 @@
                        placeholder="Ex: C:\Users\elton\Documentos\NotaSync"
                        required
                        th:field="*{caminhoDiretorio}" />
-
               </div>
 
               <button type="submit" class="btn btn-success mt-3">
@@ -143,7 +151,8 @@
     </div>
   </div>
 </div>
-<!-- fim formulario Cadastro de Diretório -->
+<!-- Fim Formulario Cadastro/Edicao -->
+
 <!-- Lista de Diretórios Configurados -->
 <div class="row mt-4">
   <div class="col-md-12">
@@ -167,31 +176,31 @@
               </tr>
             </thead>
 
-<tbody>
-  <tr th:each="dir : ${configuracoes}">
-    <td colspan="3">
-      <a th:href="@{/admin/diretorios/{id}(id=${dir.id})}" 
-         class="text-decoration-none text-dark d-flex justify-content-between align-items-center p-2"
-         style="display: block;">
-        <span class="fw-bold" th:text="${dir.tipoDiretorio}"></span>
-        <span class="text-break" th:text="${dir.caminhoDiretorio}"></span>
-        <span class="text-center">
-          <span class="badge badge-success fs-6 px-3 py-2">
-            <i class="fa fa-check-circle me-1"></i>
-            Configurada
-          </span>
-        </span>
-      </a>
-    </td>
-  </tr>
+            <tbody>
+              <tr th:each="dir : ${configuracoes}">
+                <td colspan="3">
+                  <a th:href="@{/admin/diretorios/{id}(id=${dir.id})}" 
+                    class="text-decoration-none text-dark d-flex justify-content-between align-items-center p-2"
+                    style="display: block;">
+                    <span class="fw-bold" th:text="${dir.tipoDiretorio}"></span>
+                    <span class="text-break" th:text="${dir.caminhoDiretorio}"></span>
+                    <span class="text-center">
+                      <span class="badge badge-success fs-6 px-3 py-2">
+                        <i class="fa fa-check-circle me-1"></i>
+                        Configurada
+                      </span>
+                    </span>
+                  </a>
+                </td>
+              </tr>
 
-  <tr th:if="${#lists.isEmpty(configuracoes)}">
-    <td colspan="3"
-        class="text-center text-muted fs-5 py-4">
-      Nenhum diretório configurado
-    </td>
-  </tr>
-</tbody>
+              <tr th:if="${#lists.isEmpty(configuracoes)}">
+                <td colspan="3"
+                    class="text-center text-muted fs-5 py-4">
+                  Nenhum diretório configurado
+                </td>
+              </tr>
+            </tbody>
 
           </table>
         </div>

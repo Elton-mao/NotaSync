@@ -88,7 +88,6 @@ public class UsuarioController {
    
     @PostMapping("/atualizar/{id}")
     public String atualizar(@PathVariable Long id,@ModelAttribute UsuarioForm usuarioForm){
-        System.out.println(usuarioForm);
         usuarioService.atualizar(id, usuarioForm); 
         return "redirect:/usuarios/" + id ;
 

@@ -167,31 +167,31 @@
               </tr>
             </thead>
 
-            <tbody>
-              <tr th:each="dir : ${configuracoes}">
-                <td class="fw-bold"
-                    th:text="${dir.tipoDiretorio}">
-                </td>
+<tbody>
+  <tr th:each="dir : ${configuracoes}">
+    <td colspan="3">
+      <a th:href="@{/admin/diretorios/{id}(id=${dir.id})}" 
+         class="text-decoration-none text-dark d-flex justify-content-between align-items-center p-2"
+         style="display: block;">
+        <span class="fw-bold" th:text="${dir.tipoDiretorio}"></span>
+        <span class="text-break" th:text="${dir.caminhoDiretorio}"></span>
+        <span class="text-center">
+          <span class="badge badge-success fs-6 px-3 py-2">
+            <i class="fa fa-check-circle me-1"></i>
+            Configurada
+          </span>
+        </span>
+      </a>
+    </td>
+  </tr>
 
-                <td class="text-break"
-                    th:text="${dir.caminhoDiretorio}">
-                </td>
-
-                <td class="text-center">
-                  <span class="badge badge-success fs-6 px-3 py-2">
-                    <i class="fa fa-check-circle me-1"></i>
-                    Configurada
-                  </span>
-                </td>
-              </tr>
-
-              <tr th:if="${#lists.isEmpty(configuracoes)}">
-                <td colspan="3"
-                    class="text-center text-muted fs-5 py-4">
-                  Nenhum diretório configurado
-                </td>
-              </tr>
-            </tbody>
+  <tr th:if="${#lists.isEmpty(configuracoes)}">
+    <td colspan="3"
+        class="text-center text-muted fs-5 py-4">
+      Nenhum diretório configurado
+    </td>
+  </tr>
+</tbody>
 
           </table>
         </div>
