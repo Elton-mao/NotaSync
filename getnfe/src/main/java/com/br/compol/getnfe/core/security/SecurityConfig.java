@@ -14,7 +14,7 @@ public class SecurityConfig {
 SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
         .csrf(csrf -> csrf
-            .ignoringRequestMatchers("/clientes/cadastrar") // opcional se estiver fazendo POST sem token CSRF
+            .ignoringRequestMatchers("/clientes/cadastrar","/upload") // opcional se estiver fazendo POST sem token CSRF
         )
         .authorizeHttpRequests(auth -> auth
             .anyRequest().authenticated()

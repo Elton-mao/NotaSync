@@ -57,15 +57,15 @@ import lombok.RequiredArgsConstructor;
  * <p>Nota:</p>
  * Certifique-se de que os diretórios para arquivos "processados" e "erro" sejam criados manualmente antes de executar o serviço.
  */
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class XmlServiceImpl implements XmlService{
 
     private final NotaFiscalService notaFiscalService;
     private final DiretorioService diretorioService;
     
     private Path diretorioXML;
-
+//981650530
     private Path caminhoProcessados;
 
    
@@ -79,7 +79,7 @@ public class XmlServiceImpl implements XmlService{
      * Método agendado para importar e processar todos os arquivos XML no diretório especificado.
      */
     @Override
-    @Scheduled(fixedDelay = 60000)// Executa a cada 60 segundos
+    @Scheduled(fixedDelay = 10 * 60 * 1000)// Executa a cada 60 segundos
     public void importarTodosXmls() {
         
         carregarDiretorios();
