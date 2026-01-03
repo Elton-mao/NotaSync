@@ -9,7 +9,6 @@ public interface StorageService {
 
       void upload(List<MultipartFile> file);
       
-      Path caminhoDoArquivo(String nomeArquivo);
 
       
 }

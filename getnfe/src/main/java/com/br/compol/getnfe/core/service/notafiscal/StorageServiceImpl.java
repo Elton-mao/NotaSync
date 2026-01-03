@@ -52,11 +52,6 @@ public class StorageServiceImpl implements StorageService {
 
     
 
-    @Override
-    public Path caminhoDoArquivo(String nomeArquivo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'caminhoDoArquivo'");
-    }
 
 
 }
