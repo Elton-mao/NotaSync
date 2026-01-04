@@ -5,8 +5,8 @@ com\br\compol\getnfe\core\mappers\notafiscal\NotafiscalMapper.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc.class
 com\br\compol\getnfe\core\mappers\usuario\UsuarioMapper.class
 com\br\compol\getnfe\web\app\emitente\dto\EmitenteListItem$EmitenteListItemBuilder.class
+com\br\compol\getnfe\core\service\notafiscal\StorageServiceImpl.class
 com\br\compol\getnfe\web\app\dashboard\controller\DashBoardController.class
-com\br\compol\getnfe\web\api\GerarDanfeRestContoller.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$DetalheProduto.class
 com\br\compol\getnfe\core\model\notafiscal\Emitente.class
 com\br\compol\getnfe\web\app\dashboard\dtos\DashBoardListItem$DashBoardListItemBuilder.class
@@ -24,6 +24,7 @@ com\br\compol\getnfe\core\service\notafiscal\NotaFiscalService.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$Protocolo.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$InfoProtocolo.class
 com\br\compol\getnfe\GetnfeApplication.class
+com\br\compol\getnfe\web\app\notafiscal\Controllers\UploadController.class
 com\br\compol\getnfe\core\model\Auth\AuthenticatedUser.class
 com\br\compol\getnfe\core\service\emitente\EmitenteServiceImpl.class
 com\br\compol\getnfe\core\utils\DataUtils.class
@@ -68,6 +69,7 @@ com\br\compol\getnfe\core\repositories\notafiscal\NotaFiscalRepository.class
 com\br\compol\getnfe\web\app\administrador\dtos\UsuarioDetails.class
 com\br\compol\getnfe\web\app\administrador\controllers\UsuarioController.class
 com\br\compol\getnfe\core\service\usuario\UsuarioService.class
+com\br\compol\getnfe\core\service\notafiscal\StorageService.class
 com\br\compol\getnfe\core\model\notafiscal\NfeProc$Endereco.class
 com\br\compol\getnfe\core\service\dashboard\DashBoardServiceImpl.class
 com\br\compol\getnfe\core\configurações\diretorios\DiretorioConfigMapper.class

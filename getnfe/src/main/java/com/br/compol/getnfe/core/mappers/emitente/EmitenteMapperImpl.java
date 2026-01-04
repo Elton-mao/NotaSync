@@ -35,9 +35,9 @@ public class EmitenteMapperImpl implements EmitenteMapper{
     
       return EmitenteListItem.builder()
                 .id(emitente.getId())
-                .cnpj(emitente.getCnpj())
-                .razaoSocial(emitente.getRazaoSocial())
-                .inscricaoEstadual(emitente.getInscricaoEstadual())
+                .cnpj("00.000.000/0000-00")
+                .razaoSocial("REMOVIDO PRA PROTEÇÃO DE DADOS PESSOAIS")
+                .inscricaoEstadual("REMOVIDO PRA PROTEÇÃO DE DADOS PESSOAIS")
                 .notasFiscais(notas)
                 .totalNotasFiscais(notas.size())
                 .build();

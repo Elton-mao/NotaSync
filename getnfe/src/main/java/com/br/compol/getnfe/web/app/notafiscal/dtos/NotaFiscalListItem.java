@@ -3,10 +3,8 @@ package com.br.compol.getnfe.web.app.notafiscal.dtos;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import com.br.compol.getnfe.core.model.notafiscal.Emitente;
 import com.br.compol.getnfe.core.utils.DataUtils;
 import com.br.compol.getnfe.core.utils.NumberUtils;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -66,7 +64,11 @@ public class NotaFiscalListItem {
 
     private BigDecimal valorTotal;
 
-    private Emitente emitente;
+    private String emitenteRazaoSocial;
+
+    private String emitenteCnpj;
+
+    private String emitenteInscricaoEstadual;
 
     private String caminhoArquivoXml; 
 

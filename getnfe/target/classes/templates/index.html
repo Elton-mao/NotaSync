@@ -200,7 +200,7 @@
               <a>
             </div>
             
-            <!-- Lista de Notas Fiscais (Mock, sem Thymeleaf) -->
+            <!-- Lista de Notas Fiscais recentes  -->
             <div class="row mt-3">
               <div class="col-12">
                 <div class="card card-round">
@@ -222,32 +222,58 @@
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
-                      <table class="table table-hover align-items-center mb-0">
-                        <thead class="thead-light">
-                          <tr>
-                            <th scope="col" >Número</th>
-                            <th scope="col">Emissão</th>
-                            <th scope="col">Fornecedor</th>
-                            <th scope="col" class="text-end">Valor (R$)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-
+                                        <table
+                  id="basic-datatables"
+                  class="display table table-striped table-hover"
+                  >
+                  <thead>
+                    <tr>
+                      <th>Emitente</th>
+                      <th>CNPJ</th>
+                      <th>Numero da Nota</th>
+                      <th>Chave</th>
+                      <th>Valor</th>
+                      <th>Data</th>
+                      <th>Detalhes</th> <!-- Nova coluna -->
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Emitente</th>
+                      <th>CNPJ</th>
+                      <th>Numero da Nota</th>
+                      <th>Chave</th>
+                      <th>Valor</th>
+                      <th>Data</th>
+                      <th>Detalhes</th> <!-- Nova coluna -->
+                    </tr>
+                  </tfoot>
+                  <tbody>
                         <tr th:if="${#lists.isEmpty(dashboard.ultimasNfe5dias)}">
                           <td colspan="4" class="text-center text-muted">
                             Não há notas fiscais recentes para exibir no momento.
                           </td>
                         </tr>
 
-                        <tr th:each="nf : ${dashboard.ultimasNfe5dias}">
-                          <td th:text="${nf?.numeroDaNota}"></td>
-                          <td th:text="${nf?.dataEmissao}"></td>
-                          <td th:text="${nf?.emitente}"></td>
-                          <td class="text-end" th:text="${nf?.valorTotal}"></td>
-                        </tr>
+                    <tr th:each="nota : ${dashboard.ultimasNfe5dias}">
+                      <td th:text = "${nota.emitenteRazaoSocial}">Empresa A</td>
+                      <td th:text = "${nota.emitenteCnpj}">12.345.678/0001-90</td>
+                      <td th:text = "${nota.numeroDaNota}">12.345.678/0001-90</td>
+                      <td th:text = "${nota.chaveAcesso}">12345678901234567890123456789012345678901234</td>
+                      <td th:text="${nota.valorTotalFormatado}">0,00</td>
+                      <td th:text = "${nota.dataEmisaoFormatada}" >01/01/2024</td>
+                        <td>
+                          <a
+                          th:href="@{/notafiscal/detalhes/{id}(id=${nota.id})}"
+                          class="btn btn-primary btn-sm">
+                          Detalhes
+                        </a>                       
+                       </td>
+                    </tr>
+                   
+                  </tbody>
+                  </table>
 
-                        </tbody>
-                      </table>
                     </div>
                   </div>
                 </div>
@@ -256,7 +282,7 @@
           
             
            
-              <div class="col-md-8">
+              <!-- <div class="col-md-8">
                 <div class="card card-round">
                   <div class="card-header">
                     <div class="card-head-row card-tools-still-right">
@@ -308,7 +334,7 @@
                   </div>
                 </div>
               </div>
-              
+               -->
 
         
       </div>

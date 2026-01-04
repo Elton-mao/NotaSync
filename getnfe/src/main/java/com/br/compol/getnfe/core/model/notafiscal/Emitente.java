@@ -47,8 +47,9 @@ public class Emitente {
     @Column(name = "inscricao_estadual", nullable = true, length = 20)
     private String inscricaoEstadual; 
     
-    @OneToMany(mappedBy = "emitente")
     @JsonBackReference
+    @ToString.Exclude
+    @OneToMany(mappedBy = "emitente")
     private List<NotaFiscal> notasFiscais; 
 
 

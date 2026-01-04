@@ -29,14 +29,12 @@ public class EmitenteListItem {
     private int totalNotasFiscais;
     private String valorTotalEmitido; // Formato monetário 
 
-    
-    public String getCnpj(){
-        return NumberUtils.formatCNPJ(cnpj);
-    }
+   
     public String getCnpjFormatado() {
     return NumberUtils.formatCNPJ(cnpj);
 }
 
+   
 
 
 }

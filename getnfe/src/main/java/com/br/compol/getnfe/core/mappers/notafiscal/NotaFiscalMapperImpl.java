@@ -17,8 +17,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class NotaFiscalMapperImpl implements NotafiscalMapper {
 
-    
-  
     /**
      * Converte um objeto NfeProc para um objeto NotaFiscal.
      * 
@@ -70,7 +68,9 @@ public class NotaFiscalMapperImpl implements NotafiscalMapper {
                 .chaveAcesso(notaFiscal.getChaveAcesso())
                 .valorPago(notaFiscal.getValorPago())
                 .valorTotal(notaFiscal.getValorTotal())
-                .emitente(notaFiscal.getEmitente())
+                .emitenteRazaoSocial(notaFiscal.getEmitente().getRazaoSocial())
+                .emitenteCnpj(notaFiscal.getEmitente().getCnpj())
+                .emitenteInscricaoEstadual(notaFiscal.getEmitente().getInscricaoEstadual())
                 .caminhoArquivoXml(notaFiscal.getCaminhoArquivoXml())
                 .build();
 
