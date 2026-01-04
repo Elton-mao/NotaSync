@@ -25,13 +25,21 @@ public class DashBoardServiceImpl implements DashboardService {
   private final NotaFiscalService  notaFiscalService;
 
   private final EmitenteService emitenteService; 
-
+  /**
+   * Método para obter os dados para o dashboard principal
+   *  */  
+ 
   @Override
   public DashBoardListItem getDashboardData() {
+    
     //busca as notas fiscais do último mês
     List<NotaFiscalListItem> notasFiscais = notaFiscalService.findByDataEmissaoBetween(
         LocalDate.now().withDayOfMonth(1).atStartOfDay(),
         LocalDateTime.now());
+    //busca as notas fiscais dos últimos 5 dias
+    List<NotaFiscalListItem> ultimas5dias = notaFiscalService.findByDataEmissaoBetween(
+        LocalDate.now().minusDays(5).atStartOfDay(),
+        LocalDateTime.now());   
     //calcula o valor total das notas fiscais do último mês
     BigDecimal valorTotalUltimoMes = notasFiscais.stream()
         .map(n -> new BigDecimal(n.getValorTotal().toString()))
@@ -43,9 +51,11 @@ public class DashBoardServiceImpl implements DashboardService {
         .qtdadeNfe(notasFiscais.size())
         .qtdFornecedores(emitentes)
         .valorTotalNfeUltimoMes(valorTotalUltimoMes)
+        .ultimasNfe5dias(ultimas5dias)
         .build();
   } 
-  //método para obter os totais dos últimos 3 meses
+  
+  //método para obter os totais dos últimos 3 meses OBS não esta em Uso
   public Map<String, BigDecimal> getTotaisUltimos3Meses() {
     LocalDate hoje = LocalDate.now();
     LocalDate primeiroDia3MesesAtras = hoje.minusMonths(2).withDayOfMonth(1); // Ex: se hoje é maio, começa em março

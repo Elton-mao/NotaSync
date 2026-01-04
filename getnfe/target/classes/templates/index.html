@@ -206,7 +206,7 @@
                 <div class="card card-round">
                   <div class="card-header">
                     <div class="card-head-row card-tools-still-right">
-                      <div class="card-title">Notas Fiscais (Mock)</div>
+                      <div class="card-title">Notas Fiscais Recentes</div>
                       <div class="card-tools">
                         <div class="dropdown">
                           <button class="btn btn-icon btn-clean me-0" type="button" id="dropdownNotasMock" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -225,70 +225,27 @@
                       <table class="table table-hover align-items-center mb-0">
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">Número</th>
+                            <th scope="col" >Número</th>
                             <th scope="col">Emissão</th>
                             <th scope="col">Fornecedor</th>
                             <th scope="col" class="text-end">Valor (R$)</th>
-                            <th scope="col">Situação</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>000123</td>
-                            <td>2025-12-01</td>
-                            <td>Fornecedor A</td>
-                            <td class="text-end">12.500,00</td>
-                            <td><span class="badge bg-success">Autorizada</span></td>
-                          </tr>
-                          <tr>
-                            <td>000124</td>
-                            <td>2025-12-02</td>
-                            <td>Fornecedor B</td>
-                            <td class="text-end">8.940,50</td>
-                            <td><span class="badge bg-warning">Pendente</span></td>
-                          </tr>
-                          <tr>
-                            <td>000125</td>
-                            <td>2025-12-02</td>
-                            <td>Fornecedor C</td>
-                            <td class="text-end">22.300,00</td>
-                            <td><span class="badge bg-success">Autorizada</span></td>
-                          </tr>
-                          <tr>
-                            <td>000126</td>
-                            <td>2025-12-03</td>
-                            <td>Fornecedor D</td>
-                            <td class="text-end">5.120,75</td>
-                            <td><span class="badge bg-danger">Rejeitada</span></td>
-                          </tr>
-                          <tr>
-                            <td>000127</td>
-                            <td>2025-12-03</td>
-                            <td>Fornecedor E</td>
-                            <td class="text-end">17.890,00</td>
-                            <td><span class="badge bg-success">Autorizada</span></td>
-                          </tr>
-                          <tr>
-                            <td>000128</td>
-                            <td>2025-12-04</td>
-                            <td>Fornecedor F</td>
-                            <td class="text-end">3.420,00</td>
-                            <td><span class="badge bg-secondary">Cancelada</span></td>
-                          </tr>
-                          <tr>
-                            <td>000129</td>
-                            <td>2025-12-04</td>
-                            <td>Fornecedor G</td>
-                            <td class="text-end">9.999,99</td>
-                            <td><span class="badge bg-success">Autorizada</span></td>
-                          </tr>
-                          <tr>
-                            <td>000130</td>
-                            <td>2025-12-05</td>
-                            <td>Fornecedor H</td>
-                            <td class="text-end">1.250,00</td>
-                            <td><span class="badge bg-warning">Pendente</span></td>
-                          </tr>
+
+                        <tr th:if="${#lists.isEmpty(dashboard.ultimasNfe5dias)}">
+                          <td colspan="4" class="text-center text-muted">
+                            Não há notas fiscais recentes para exibir no momento.
+                          </td>
+                        </tr>
+
+                        <tr th:each="nf : ${dashboard.ultimasNfe5dias}">
+                          <td th:text="${nf?.numeroDaNota}"></td>
+                          <td th:text="${nf?.dataEmissao}"></td>
+                          <td th:text="${nf?.emitente}"></td>
+                          <td class="text-end" th:text="${nf?.valorTotal}"></td>
+                        </tr>
+
                         </tbody>
                       </table>
                     </div>
@@ -339,22 +296,7 @@
                             <td>Fornecedor A</td>
                             <td class="text-end">15</td>
                             <td class="text-end">120.500,00</td>
-                          </tr>
-                          <tr>
-                            <td>Fornecedor B</td>
-                            <td class="text-end">12</td>
-                            <td class="text-end">95.300,00</td>
-                          </tr>
-                          <tr>
-                            <td>Fornecedor C</td>
-                            <td class="text-end">10</td>
-                            <td class="text-end">73.000,00</td>
-                          </tr>
-                          <tr>
-                            <td>Fornecedor D</td>
-                            <td class="text-end">9</td>
-                            <td class="text-end">68.750,00</td>
-                          </tr>
+                          </tr>                      
                           <tr>
                             <td>Fornecedor E</td>
                             <td class="text-end">8</td>

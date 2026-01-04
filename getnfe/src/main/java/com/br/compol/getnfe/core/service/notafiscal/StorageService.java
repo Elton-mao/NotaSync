@@ -1,6 +1,5 @@
 package com.br.compol.getnfe.core.service.notafiscal;
 
-import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
